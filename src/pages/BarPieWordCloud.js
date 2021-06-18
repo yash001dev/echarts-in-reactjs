@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoIosAdd, IoIosCheckmark, IoIosRefresh } from "react-icons/io";
 import { Button, ButtonGroup, Col, Row } from "reactstrap";
-
+import { useImmer } from "use-immer"; 
 import ECharts from "../Echarts/ECharts";
 import "echarts-wordcloud";
 
@@ -23,9 +23,9 @@ const initialBar = {
 const initialPie = { data: [], error: undefined, loading: true };
 
 export default function BarPieWordCloud() {
-  const [barData, setBarData] = useState(initialBar);
-  const [pieData, setPieData] = useState(initialPie);
-  const [wordData, setWordData] = useState(initialPie);
+  const [barData, setBarData] = useImmer(initialBar);
+  const [pieData, setPieData] = useImmer(initialPie);
+  const [wordData, setWordData] = useImmer(initialPie);
 
   useEffect(() => {
     getBarChart(); // API
